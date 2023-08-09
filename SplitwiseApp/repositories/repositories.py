@@ -7,17 +7,17 @@ class UserRepository:
         return user
     
     def get_user_by_id(self, user_id):
-        user = User.objects.get(id=user_id)
+        user = User.objects.filter(id=user_id)
         return user
 
     def save(self, user):
         user.save()
 
-    
 class GroupRepository:
 
     def get_group_by_id(self, group_id):
-        return Group.objects.get(id=group_id)
+        group = Group.objects.filter(id=group_id)
+        return group
     
     def save(self, group):
         group.save()
@@ -27,10 +27,18 @@ class ExpenseRepository:
     def get_expense_by_id(self, expense_id):
         return Expense.objects.get(id=expense_id)
     
+    def get_expenses_by_group(self, group):
+        return Expense.objects.filter(group=group)
+    
     def save(self, expense):
         expense.save()
     
 class UserExpenseRepository:
 
-    def get_userexpense_by_id(self, userexpense_id):
-        return UserExpense.objects.get(id=userexpense_id)
+    def get_userexpenses_by_user(self, user):
+        userExpenses = UserExpense.objects.filter(user=user)
+        return userExpenses
+    
+    def get_userexpenses_by_expenses(self, expenses):
+        userExpenses = UserExpense.objects.filter(expense__in=expenses)
+        return userExpenses

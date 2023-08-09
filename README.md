@@ -182,7 +182,6 @@ Note: Make the reasonable assumptions 100/3 = 33.33 assign one person 33.34 and 
 - Type
 - CreatedBy
 - Group
-- Users
 
 ### UserStatus
 - ACTIVE/INVITED
@@ -245,5 +244,9 @@ Note: Make the reasonable assumptions 100/3 = 33.33 assign one person 33.34 and 
 
 ```python 
 python3 manage.py migrate
-python3 manage.py runserver 5555
+```
+
+### This will register user with his details to the database
+```python 
+python3 manage.py Register Pratyay 9988 ggwp@orkut.com WSIRHWIsayu44522t
 ```
